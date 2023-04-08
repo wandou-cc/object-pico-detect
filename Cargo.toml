@@ -42,4 +42,18 @@ clap = { version = "4.1.8", features = ["derive"] }
 anyhow = "1.0"
 ab_glyph = "0.2.23"
 
-[dev
+[dev-dependencies.cargo-husky]
+version = "1.5.0"
+features = ["precommit-hook", "run-cargo-clippy"]
+
+[[bench]]
+name = "pico_detect_bench"
+harness = false
+path = "benches/lib.rs"
+
+[[example]]
+name = "detect-faces"
+path = "examples/detect-faces/main.rs"
+
+# uncomment for debugging
+# 
