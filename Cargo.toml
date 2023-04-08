@@ -6,4 +6,20 @@ edition = "2018"
 keywords = ["pico", "detection", "localization", "prediction"]
 categories = ["computer-vision", "wasm"]
 license = "MIT"
-description
+description = "Pixel Intensity Comparison-based Object (PICO) detection library."
+repository = "https://github.com/rostyq/pico-detect"
+readme = "README.md"
+exclude = [
+  "assets",
+  "tests",
+  "models",
+  "examples",
+  ".gitattributes"
+]
+
+[lib]
+name = "pico_detect"
+bench = false
+
+[dependencies]
+nalgebra = { 
