@@ -22,4 +22,10 @@ name = "pico_detect"
 bench = false
 
 [dependencies]
-nalgebra = { 
+nalgebra = { version = "0.32.1", default-features = false, features = [ "std" ] }
+image = { version = "0.25.1", default-features = false }
+imageproc = { version = "0.24.0", default-features = false }
+rand = "0.8.5"
+similarity-least-squares = "0.2.0"
+rand_xoshiro = "0.6.0"
+deri
