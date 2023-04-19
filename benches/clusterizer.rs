@@ -24,4 +24,10 @@ pub fn bench_clusterize(c: &mut Criterion) {
 
         group.throughput(Throughput::Elements(*n as u64));
 
- 
+        group.bench_with_input(id, &n, |b, &n| {
+            let perturbator = Perturbator::default();
+            let clusterizer = Clusterizer::default();
+
+            let mut rng = Xoroshiro128PlusPlus::seed_from_u64(42);
+
+            let mut dat
