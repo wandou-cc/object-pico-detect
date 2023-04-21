@@ -15,4 +15,15 @@ macro_rules! model_path {
     };
 
     (puploc) => {
-        std::pat
+        std::path::Path::new("./models/pupil.localizer.bin")
+    };
+
+    (shaper) => {
+        std::path::Path::new("./models/face-5.shaper.bin")
+    };
+}
+
+macro_rules! model_file {
+    (facefinder) => {
+        std::fs::File::open("./models/face.detector.bin")
+            .expect("cannot open 
