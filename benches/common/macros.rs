@@ -3,4 +3,16 @@
 
 macro_rules! load_test_image {
     () => {
-        ima
+        image::open("./assets/test.png")
+            .expect("failed to load test image")
+            .to_luma8()
+    };
+}
+
+macro_rules! model_path {
+    (facefinder) => {
+        std::path::Path::new("./models/face.detector.bin")
+    };
+
+    (puploc) => {
+        std::pat
