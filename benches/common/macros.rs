@@ -26,4 +26,14 @@ macro_rules! model_path {
 macro_rules! model_file {
     (facefinder) => {
         std::fs::File::open("./models/face.detector.bin")
-            .expect("cannot open 
+            .expect("cannot open facefinder model file")
+    };
+
+    (puploc) => {
+        std::fs::File::open("./models/pupil.localizer.bin")
+            .expect("cannot open puploc model file")
+    };
+
+    (shaper) => {
+        std::fs::File::open("./models/face-5.shaper.bin")
+            .expect("cannot open shaper mo
