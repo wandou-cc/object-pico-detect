@@ -36,4 +36,15 @@ macro_rules! model_file {
 
     (shaper) => {
         std::fs::File::open("./models/face-5.shaper.bin")
-            .expect("cannot open shaper mo
+            .expect("cannot open shaper model file")
+    };
+}
+
+macro_rules! load_model {
+    (facefinder) => {
+        pico_detect::Detector::load(model_file!(facefinder))
+            .expect("failed to load facefinder model")
+    };
+
+    (puploc) => {
+        pico_detect::Localizer::load(mod
