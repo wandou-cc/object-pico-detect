@@ -47,4 +47,12 @@ macro_rules! load_model {
     };
 
     (puploc) => {
-        pico_detect::Localizer::load(mod
+        pico_detect::Localizer::load(model_file!(puploc))
+            .expect("failed to load puploc model")
+    };
+
+    (shaper) => {
+        pico_detect::Shaper::load(model_file!(shaper))
+            .expect("failed to load shaper model")
+    }
+}
