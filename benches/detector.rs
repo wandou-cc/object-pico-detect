@@ -23,4 +23,6 @@ pub fn bench_inference(c: &mut Criterion) {
     let s = Square::new(216, 208, 170);
 
     c.bench_function("Detector::classify[inference]", |b| {
-        b.it
+        b.iter(|| detector.classify(black_box(&image), black_box(s)));
+    });
+}
