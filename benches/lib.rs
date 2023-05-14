@@ -32,4 +32,16 @@ criterion_group!(
         .sample_size(100)
         .measurement_time(Duration::from_secs(20));
     targets =
-        d
+        detector::bench_inference,
+        localizer::bench_inference,
+        shaper::bench_inference,
+);
+
+criterion_group!(
+    utils,
+    clusterizer::bench_clusterize,
+    multiscaler::bench_run,
+    perturbator::bench_run
+);
+
+criterion_main!(loading, detection, utils)
