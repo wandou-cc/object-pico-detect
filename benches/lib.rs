@@ -21,4 +21,15 @@ criterion_group!(
         .measurement_time(Duration::from_secs(10));
     targets =
         detector::bench_load,
-        localize
+        localizer::bench_load,
+        shaper::bench_load,
+);
+
+criterion_group!(
+    name = detection;
+    config = Criterion::default()
+        .warm_up_time(Duration::from_secs(5))
+        .sample_size(100)
+        .measurement_time(Duration::from_secs(20));
+    targets =
+        d
