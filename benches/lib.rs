@@ -44,4 +44,4 @@ criterion_group!(
     perturbator::bench_run
 );
 
-criterion_main!(loading, detection, utils)
+criterion_main!(loading, detection, utils);
