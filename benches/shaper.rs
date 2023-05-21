@@ -16,4 +16,13 @@ pub fn bench_load(c: &mut Criterion) {
     });
 }
 
-pub fn bench_inference(c: &mut Crit
+pub fn bench_inference(c: &mut Criterion) {
+    let image = load_test_image!();
+    let shaper = load_model!(shaper);
+
+    let r = Square::new(213, 225, 153).into();
+
+    c.bench_function("Shaper::shape[inference]", |b| {
+        b.iter(|| shaper.shape(black_box(&image), black_box(r)));
+    });
+}
