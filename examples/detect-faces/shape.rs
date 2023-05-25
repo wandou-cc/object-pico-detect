@@ -16,4 +16,9 @@ impl Shape5 {
     }
 
     #[allow(dead_code)]
-    pub fn find_eye_centers(shape: &[Point2
+    pub fn find_eye_centers(shape: &[Point2<f32>]) -> (Point2<f32>, Point2<f32>) {
+        assert_eq!(shape.len(), Self::size());
+        (
+            nalgebra::center(
+                &shape[Self::LeftInnerEyeCorner as usize],
+                &shape[Self::LeftOuterEyeCorner as usize],
