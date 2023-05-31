@@ -22,3 +22,13 @@ impl Shape5 {
             nalgebra::center(
                 &shape[Self::LeftInnerEyeCorner as usize],
                 &shape[Self::LeftOuterEyeCorner as usize],
+            ),
+            nalgebra::center(
+                &shape[Self::RightInnerEyeCorner as usize],
+                &shape[Self::RightOuterEyeCorner as usize],
+            ),
+        )
+    }
+
+    pub fn find_eyes_roi(shape: &[Point2<f32>]) -> (Square, Square) {
+        assert_eq!(shape.len(), Self::size(
