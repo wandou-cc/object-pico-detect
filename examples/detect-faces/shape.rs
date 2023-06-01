@@ -41,4 +41,14 @@ impl Shape5 {
             &shape[Self::RightOuterEyeCorner as usize],
         );
 
-    
+        let (dl, dr) = (lo - li, ri - ro);
+        let (l, r) = (li + dl.scale(0.5), ro + dr.scale(0.5));
+
+        let ls = dl.norm() * 1.1;
+        let rs = dr.norm() * 1.1;
+
+        let lh = ls / 2.0;
+        let rh = rs / 2.0;
+
+        (
+            Square:
