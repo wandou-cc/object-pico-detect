@@ -31,4 +31,14 @@ impl Shape5 {
     }
 
     pub fn find_eyes_roi(shape: &[Point2<f32>]) -> (Square, Square) {
-        assert_eq!(shape.len(), Self::size(
+        assert_eq!(shape.len(), Self::size());
+        let (li, lo) = (
+            &shape[Self::LeftInnerEyeCorner as usize],
+            &shape[Self::LeftOuterEyeCorner as usize],
+        );
+        let (ri, ro) = (
+            &shape[Self::RightInnerEyeCorner as usize],
+            &shape[Self::RightOuterEyeCorner as usize],
+        );
+
+    
