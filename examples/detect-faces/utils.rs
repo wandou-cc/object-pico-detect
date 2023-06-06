@@ -16,4 +16,11 @@ pub fn draw_face(image: &mut RgbImage, face: &Face, font: &FontRef<'_>, scale: f
     }
 
     let color = Rgb([255, 0, 0]);
-    drawing::draw_cross_mut(image, color, face.pupil
+    drawing::draw_cross_mut(image, color, face.pupils.0.x as i32, face.pupils.0.y as i32);
+    drawing::draw_cross_mut(image, color, face.pupils.1.x as i32, face.pupils.1.y as i32);
+}
+
+pub fn print_faces_data(faces: &[Face]) {
+    println!("Faces detected: {}.", faces.len());
+    for (i, face) in faces.iter().enumerate() {
+    
