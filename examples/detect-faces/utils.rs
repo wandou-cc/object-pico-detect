@@ -30,4 +30,13 @@ pub fn print_faces_data(faces: &[Face]) {
 
         for (i, point) in face.shape.iter().enumerate() {
             print!("\t");
-            println!("point {}: {}", i,
+            println!("point {}: {}", i, &point);
+        }
+
+        print!("\t");
+        println!("left  pupil: {}", &face.pupils.0);
+        print!("\t");
+        println!("right pupil: {}", &face.pupils.1);
+        print!("\n");
+    }
+}
