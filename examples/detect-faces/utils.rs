@@ -23,4 +23,11 @@ pub fn draw_face(image: &mut RgbImage, face: &Face, font: &FontRef<'_>, scale: f
 pub fn print_faces_data(faces: &[Face]) {
     println!("Faces detected: {}.", faces.len());
     for (i, face) in faces.iter().enumerate() {
-    
+        print!("{} ::\t", i);
+        println!("location: {:?}", &face.region);
+        print!("\t");
+        println!("score: {}", face.score);
+
+        for (i, point) in face.shape.iter().enumerate() {
+            print!("\t");
+            println!("point {}: {}", i,
