@@ -25,3 +25,7 @@ struct Args {
 }
 
 fn main() -> Result<()> {
+    let args = Args::parse();
+    let font = FontRef::try_from_slice(include_bytes!("../assets/DejaVuSansDigits.ttf")).expect("Failed to load font.");
+    let file = BufReader::new(File::open(&args.model_path).context("Failed to open model file.")?);
+    let shaper = Shaper::load(file).context("Error during model loading.")?
