@@ -15,4 +15,13 @@ use ab_glyph::FontRef;
 
 
 #[derive(Parser, Debug)]
-#[co
+#[command(author, version, about = "Print init points from shaper model.")]
+struct Args {
+    #[arg(value_hint = clap::ValueHint::FilePath)]
+    model_path: PathBuf,
+
+    #[arg(short, long, value_hint = clap::ValueHint::FilePath)]
+    output_path: Option<PathBuf>,
+}
+
+fn main() -> Result<()> {
