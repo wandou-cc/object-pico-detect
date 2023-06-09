@@ -28,4 +28,14 @@ fn main() -> Result<()> {
     let args = Args::parse();
     let font = FontRef::try_from_slice(include_bytes!("../assets/DejaVuSansDigits.ttf")).expect("Failed to load font.");
     let file = BufReader::new(File::open(&args.model_path).context("Failed to open model file.")?);
-    let shaper = Shaper::load(file).context("Error during model loading.")?
+    let shaper = Shaper::load(file).context("Error during model loading.")?;
+
+    println!("i,x,y");
+    for (i, point) in shaper.init_points().iter().enumerate() {
+        println!("{},{},{}", i, point.x, point.y);
+    }
+
+    if let Some(path) = args.output_path {
+        let points: Vec<Point<i32>> = shaper
+            .init_points()
+  
