@@ -38,4 +38,11 @@ fn main() -> Result<()> {
     if let Some(path) = args.output_path {
         let points: Vec<Point<i32>> = shaper
             .init_points()
-  
+            .iter()
+            .map(|p| p.coords.scale(1000.0))
+            .map(|v| Point::new(v.x as i32, v.y as i32))
+            // .inspect(|p| println!("{}", p))
+            .collect();
+
+        let [tl, _, br, _] = min_area_rect(&points);
+        let rect = Rect::at(tl.x, tl.y)
