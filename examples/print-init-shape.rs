@@ -45,4 +45,14 @@ fn main() -> Result<()> {
             .collect();
 
         let [tl, _, br, _] = min_area_rect(&points);
-        let rect = Rect::at(tl.x, tl.y)
+        let rect = Rect::at(tl.x, tl.y).of_size((br.x - tl.x) as u32, (br.y - tl.y) as u32);
+
+        let padding = 50;
+
+        let mut image = RgbImage::new(rect.width() + padding * 2, rect.height() + padding * 2);
+
+        let color = Rgb::from([0u8, 255u8, 0u8]);
+        let scale = 20.0;
+        let radius = 5;
+
+        for
