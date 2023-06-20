@@ -55,4 +55,9 @@ fn main() -> Result<()> {
         let scale = 20.0;
         let radius = 5;
 
-        for
+        for (i, point) in points.iter().enumerate() {
+            let x = padding as i32 + point.x - rect.left();
+            let y = padding as i32 + point.y - rect.top();
+
+            draw_filled_circle_mut(&mut image, (x, y), radius, color);
+            draw_text_m
