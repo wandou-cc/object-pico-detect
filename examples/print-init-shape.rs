@@ -60,4 +60,19 @@ fn main() -> Result<()> {
             let y = padding as i32 + point.y - rect.top();
 
             draw_filled_circle_mut(&mut image, (x, y), radius, color);
-            draw_text_m
+            draw_text_mut(
+                &mut image,
+                color,
+                x + radius,
+                y + radius,
+                scale,
+                &font,
+                &format!("{}", i),
+            );
+        }
+
+        image.save(path).context("Cannot write output image.")?;
+    }
+
+    Ok(())
+}
