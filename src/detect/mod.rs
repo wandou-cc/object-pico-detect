@@ -18,4 +18,16 @@ pub use detector::Detector;
 pub use padding::Padding;
 
 #[derive(Debug, Clone, Copy, Builder)]
-#
+#[builder]
+pub struct DetectMultiscale {
+    pub multiscaler: Multiscaler,
+    #[builder(default)]
+    pub clusterizer: Clusterizer,
+    #[builder(default)]
+    pub padding: Padding,
+}
+
+impl DetectMultiscale {
+    #[inline]
+    pub fn builder() -> DetectMultiscaleBuilder {
+        Default::default
