@@ -30,4 +30,14 @@ pub struct DetectMultiscale {
 impl DetectMultiscale {
     #[inline]
     pub fn builder() -> DetectMultiscaleBuilder {
-        Default::default
+        Default::default()
+    }
+
+    #[inline]
+    pub fn run<I>(&self, detector: &Detector, image: &I) -> Vec<Detection<Target>>
+    where
+        I: GenericImageView<Pixel = Luma<u8>>,
+    {
+        let mut detections = Vec::new();
+        
+        self.multiscaler.run(self.padding.image_rect(image), |reg
