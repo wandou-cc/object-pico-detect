@@ -40,4 +40,14 @@ impl DetectMultiscale {
     {
         let mut detections = Vec::new();
         
-        self.multiscaler.run(self.padding.image_rect(image), |reg
+        self.multiscaler.run(self.padding.image_rect(image), |region| {
+            if let Some(detection) = detector.detect(image, region) {
+                detections.push(detection);
+            }
+        });
+
+        let mut clusters = Vec::new();
+
+        self.clusterizer.clusterize(&mut detections, &mut clusters);
+
+        clu
