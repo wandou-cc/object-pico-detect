@@ -50,4 +50,6 @@ impl DetectMultiscale {
 
         self.clusterizer.clusterize(&mut detections, &mut clusters);
 
-        clu
+        clusters
+    }
+}
