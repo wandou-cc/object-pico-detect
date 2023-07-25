@@ -30,4 +30,13 @@ impl Multiscaler {
         max_size: u32,
         shift_factor: f32,
         scale_factor: f32,
-    ) -> Res
+    ) -> Result<Self, MultiscalerError> {
+        if min_size == 0 {
+            return Err(MultiscalerError::MinSizeIsZero);
+        }
+
+        if min_size > max_size {
+            return Err(MultiscalerError::MaxSizeLessThanMinSize);
+        }
+
+        if !(0.0..=1.0).contains(&shi
