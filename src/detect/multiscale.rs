@@ -39,4 +39,16 @@ impl Multiscaler {
             return Err(MultiscalerError::MaxSizeLessThanMinSize);
         }
 
-        if !(0.0..=1.0).contains(&shi
+        if !(0.0..=1.0).contains(&shift_factor) {
+            return Err(MultiscalerError::ShiftFactorOutOfRange);
+        }
+
+        if scale_factor < 1.0 {
+            return Err(MultiscalerError::ScaleFactorLessThanOne);
+        }
+
+        Ok(Self {
+            min_size,
+            max_size,
+            shift_factor,
+     
