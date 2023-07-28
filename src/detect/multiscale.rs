@@ -81,3 +81,17 @@ impl Multiscaler {
             self.max_size,
             self.shift_factor,
             self.scale_factor,
+            rect,
+            f,
+        )
+    }
+
+    #[inline]
+    pub fn count(&self, rect: Rect) -> usize {
+        let mut count = 0;
+        self.run(rect, |_| count += 1);
+        count
+    }
+
+    #[inline]
+    pub fn collect(&self, rect: Rec
