@@ -51,4 +51,21 @@ impl Multiscaler {
             min_size,
             max_size,
             shift_factor,
-     
+            scale_factor,
+        })
+    }
+
+    pub fn min_size(&self) -> u32 {
+        self.min_size
+    }
+
+    pub fn max_size(&self) -> u32 {
+        self.max_size
+    }
+
+    pub fn shift_factor(&self) -> f32 {
+        self.shift_factor
+    }
+
+    pub fn scale_factor(&self) -> f32 {
+        self.
