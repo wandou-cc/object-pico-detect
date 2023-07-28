@@ -68,4 +68,16 @@ impl Multiscaler {
     }
 
     pub fn scale_factor(&self) -> f32 {
-        self.
+        self.scale_factor
+    }
+
+    #[inline]
+    pub fn run<F>(&self, rect: Rect, f: F)
+    where
+        F: FnMut(Square),
+    {
+        multiscale(
+            self.min_size,
+            self.max_size,
+            self.shift_factor,
+            self.scale_factor,
