@@ -107,4 +107,19 @@ pub fn multiscale<F>(
     max_size: u32,
     shift_factor: f32,
     scale_factor: f32,
-  
+    rect: Rect,
+    mut f: F,
+) where
+    F: FnMut(Square),
+{
+    let mut size = min_size;
+
+    let start_x = rect.left();
+    let start_y = rect.top();
+
+    let right = start_x + rect.width() as i32;
+    let bottom = start_y + rect.height() as i32;
+
+    while size <= max_size {
+        let sizef = size as f32;
+       
