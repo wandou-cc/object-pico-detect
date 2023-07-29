@@ -94,4 +94,17 @@ impl Multiscaler {
     }
 
     #[inline]
-    pub fn collect(&self, rect: Rec
+    pub fn collect(&self, rect: Rect) -> Vec<Square> {
+        let mut result = Vec::with_capacity(self.count(rect));
+        self.run(rect, |s| result.push(s));
+        result
+    }
+}
+
+#[inline]
+pub fn multiscale<F>(
+    min_size: u32,
+    max_size: u32,
+    shift_factor: f32,
+    scale_factor: f32,
+  
