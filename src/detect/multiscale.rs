@@ -122,4 +122,11 @@ pub fn multiscale<F>(
 
     while size <= max_size {
         let sizef = size as f32;
-       
+        let step: usize = 1.max((sizef * shift_factor) as usize);
+
+        let end_x = right - size as i32;
+        let end_y = bottom - size as i32;
+
+        for y in (start_y..=end_y).step_by(step) {
+            for x in (start_x..=end_x).step_by(step) {
+                f(Square::new(x
