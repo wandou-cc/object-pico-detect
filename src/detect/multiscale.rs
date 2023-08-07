@@ -129,4 +129,18 @@ pub fn multiscale<F>(
 
         for y in (start_y..=end_y).step_by(step) {
             for x in (start_x..=end_x).step_by(step) {
-                f(Square::new(x
+                f(Square::new(x, y, size))
+            }
+        }
+        size = (sizef * scale_factor) as u32;
+    }
+}
+
+#[cfg(test)]
+mod tests {
+    use super::*;
+
+    #[test]
+    fn test_multiscale_run() {
+        let ms = Multiscaler::new(1, 4, 1.0, 2.0).unwrap();
+        ms.run(Rect::at(0, 0).of_size(
