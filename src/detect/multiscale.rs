@@ -143,4 +143,6 @@ mod tests {
     #[test]
     fn test_multiscale_run() {
         let ms = Multiscaler::new(1, 4, 1.0, 2.0).unwrap();
-        ms.run(Rect::at(0, 0).of_size(
+        ms.run(Rect::at(0, 0).of_size(4, 4), |s| println!("{:?}", s));
+    }
+}
