@@ -35,4 +35,21 @@ impl Square {
             })
         } else {
             Err("Region is not a square".into())
-      
+        }
+    }
+
+    #[inline]
+    pub fn new(left: i32, top: i32, size: u32) -> Self {
+        Self { left, top, size }
+    }
+
+    #[inline]
+    pub fn size(&self) -> u32 {
+        self.size
+    }
+}
+
+impl Region for Square {
+    #[inline]
+    fn left(&self) -> i32 {
+        self.left
