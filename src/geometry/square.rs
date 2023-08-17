@@ -11,4 +11,19 @@ pub struct Square {
 
 impl Square {
     #[inline]
-    pub fn at(x: i32, y: i32) 
+    pub fn at(x: i32, y: i32) -> Self {
+        Self {
+            left: x,
+            top: y,
+            size: 1,
+        }
+    }
+
+    #[inline]
+    pub fn of_size(mut self, value: u32) -> Self {
+        self.size = value;
+        self
+    }
+
+    #[inline]
+    pub fn from_region<T: Region>(value: T) -> Re
