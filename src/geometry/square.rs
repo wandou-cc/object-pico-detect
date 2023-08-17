@@ -26,4 +26,13 @@ impl Square {
     }
 
     #[inline]
-    pub fn from_region<T: Region>(value: T) -> Re
+    pub fn from_region<T: Region>(value: T) -> Result<Self, String> {
+        if value.is_square() {
+            Ok(Self {
+                left: value.left(),
+                top: value.top(),
+                size: value.width(),
+            })
+        } else {
+            Err("Region is not a square".into())
+      
