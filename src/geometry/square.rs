@@ -53,3 +53,22 @@ impl Region for Square {
     #[inline]
     fn left(&self) -> i32 {
         self.left
+    }
+
+    #[inline]
+    fn top(&self) -> i32 {
+        self.top
+    }
+
+    #[inline]
+    fn width(&self) -> u32 {
+        self.size
+    }
+
+    #[inline]
+    fn height(&self) -> u32 {
+        self.size
+    }
+
+    #[inline]
+    fn is_square(&self) -> boo
