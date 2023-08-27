@@ -84,4 +84,6 @@ impl From<(i32, i32, u32)> for Square {
 
 impl From<Square> for Rect {
     fn from(value: Square) -> Self {
-        Self::at(value.left, value.top).of_size(value
+        Self::at(value.left, value.top).of_size(value.size, value.size)
+    }
+}
