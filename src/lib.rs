@@ -23,4 +23,8 @@ pub use geometry::{Square, Target};
 
 pub use detect::{
     clusterize, multiscale, DetectMultiscale, DetectMultiscaleBuilder,
-    DetectMultisc
+    DetectMultiscaleBuilderError, Detector, Padding, Detection
+};
+pub use localize::{perturbate, Localizer, LocalizePerturbate};
+pub use shape::Shaper;
+pub use traits::Region;
