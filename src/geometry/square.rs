@@ -71,4 +71,17 @@ impl Region for Square {
     }
 
     #[inline]
-    fn is_square(&self) -> boo
+    fn is_square(&self) -> bool {
+        true
+    }
+}
+
+impl From<(i32, i32, u32)> for Square {
+    fn from(value: (i32, i32, u32)) -> Self {
+        Self::new(value.0, value.1, value.2)
+    }
+}
+
+impl From<Square> for Rect {
+    fn from(value: Square) -> Self {
+        Self::at(value.left, value.top).of_size(value
