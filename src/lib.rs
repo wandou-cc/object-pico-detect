@@ -5,4 +5,22 @@ pub extern crate rand;
 
 extern crate similarity_least_squares;
 
-extern crate deriv
+extern crate derive_builder;
+
+#[cfg(test)]
+#[macro_use]
+extern crate approx;
+
+mod geometry;
+mod nodes;
+mod traits;
+
+mod detect;
+mod localize;
+mod shape;
+
+pub use geometry::{Square, Target};
+
+pub use detect::{
+    clusterize, multiscale, DetectMultiscale, DetectMultiscaleBuilder,
+    DetectMultisc
