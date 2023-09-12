@@ -13,4 +13,14 @@ type Stage = Vec<(Tree, Predictions)>;
 
 /// Implements object localization using decision trees.
 ///
-/// De
+/// Details available [here](https://tehnokv.com/posts/puploc-with-trees/).
+#[derive(Clone)]
+pub struct Localizer {
+    depth: usize,
+    dsize: usize,
+    scale: f32,
+    stages: Vec<Stage>,
+}
+
+impl Debug for Localizer {
+    fn fmt(&self, f: &mut std
