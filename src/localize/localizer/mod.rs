@@ -29,4 +29,18 @@ impl Debug for Localizer {
             .field("dsize", &self.dsize)
             .field("scale", &self.scale)
             .field("stages", &self.stages.len())
-       
+            .finish()
+    }
+}
+
+impl Localizer {
+    /// Estimate object location on the image
+    ///
+    /// ### Arguments
+    ///
+    /// * `image` - Target image.
+    /// TODO
+    #[inline]
+    pub fn localize<I>(&self, image: &I, roi: Target) -> Point2<f32>
+    where
+        I: GenericImageView<Pixel = Luma<u
