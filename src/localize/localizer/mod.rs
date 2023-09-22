@@ -23,4 +23,10 @@ pub struct Localizer {
 }
 
 impl Debug for Localizer {
-    fn fmt(&self, f: &mut std
+    fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
+        f.debug_struct(stringify!(Localizer))
+            .field("depth", &self.depth)
+            .field("dsize", &self.dsize)
+            .field("scale", &self.scale)
+            .field("stages", &self.stages.len())
+       
