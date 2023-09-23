@@ -53,3 +53,10 @@ impl Localizer {
         for stage in self.stages.iter() {
             let mut translation = Translation2::identity();
             let p = unsafe { point.coords.try_cast::<i32>().unwrap_unchecked() }.into();
+            let s = size as u32;
+
+            for (codes, preds) in stage.iter() {
+                let idx = (0..self.depth).fold(0, |idx, _| {
+                    2 * idx + 1 + codes[idx].bintest(image, p, s) as usize
+                });
+                let lutidx =
