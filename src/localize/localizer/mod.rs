@@ -43,4 +43,13 @@ impl Localizer {
     #[inline]
     pub fn localize<I>(&self, image: &I, roi: Target) -> Point2<f32>
     where
-        I: GenericImageView<Pixel = Luma<u
+        I: GenericImageView<Pixel = Luma<u8>>,
+    {
+        let Target {
+            mut point,
+            mut size,
+        } = roi;
+
+        for stage in self.stages.iter() {
+            let mut translation = Translation2::identity();
+            let p = unsafe { point.coords.try_cast::<i32>().unwrap_unchecked() }.into();
