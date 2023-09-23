@@ -59,4 +59,16 @@ impl Localizer {
                 let idx = (0..self.depth).fold(0, |idx, _| {
                     2 * idx + 1 + codes[idx].bintest(image, p, s) as usize
                 });
-                let lutidx =
+                let lutidx = (idx + 1) - self.dsize;
+
+                translation.vector += preds[lutidx];
+            }
+
+            translation.vector.scale_mut(size);
+            *point = *translation.transform_point(&point);
+            size *= self.scale;
+        }
+
+        point
+    }
+
