@@ -86,4 +86,11 @@ impl Localizer {
         let ntrees = i32::from_le_bytes(buffer) as usize;
 
         readable.read_exact(&mut buffer)?;
-        let depth = i32::from_le_bytes(b
+        let depth = i32::from_le_bytes(buffer) as usize;
+        let pred_size: usize = match 2usize.checked_pow(depth as u32) {
+            Some(value) => value,
+            None => return Err(Error::new(ErrorKind::Other, "depth overflow")),
+        };
+        let code_size = pred_size - 1;
+
+        let 
