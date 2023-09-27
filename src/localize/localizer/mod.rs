@@ -93,4 +93,11 @@ impl Localizer {
         };
         let code_size = pred_size - 1;
 
-        let 
+        let mut stages = Vec::with_capacity(nstages);
+
+        for _ in 0..nstages {
+            let mut stage: Stage = Vec::with_capacity(ntrees);
+
+            for _ in 0..ntrees {
+                let mut tree: Tree = Vec::with_capacity(code_size);
+                let mut predictio
