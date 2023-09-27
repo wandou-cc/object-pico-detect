@@ -72,3 +72,9 @@ impl Localizer {
         point
     }
 
+    /// Load localizer from a readable source.
+    #[inline]
+    pub fn load(mut readable: impl Read) -> Result<Self, Error> {
+        let mut buffer: [u8; 4] = [0u8; 4];
+        readable.read_exact(&mut buffer)?;
+        let nstages = i32::from_le_bytes(buffer) as
