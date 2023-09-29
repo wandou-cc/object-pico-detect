@@ -100,4 +100,12 @@ impl Localizer {
 
             for _ in 0..ntrees {
                 let mut tree: Tree = Vec::with_capacity(code_size);
-                let mut predictio
+                let mut predictions: Predictions = Vec::with_capacity(pred_size);
+
+                for _ in 0..code_size {
+                    readable.read_exact(&mut buffer)?;
+                    let node = ComparisonNode::from(buffer);
+                    tree.push(node);
+                }
+
+                for 
