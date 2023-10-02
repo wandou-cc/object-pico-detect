@@ -108,4 +108,11 @@ impl Localizer {
                     tree.push(node);
                 }
 
-                for 
+                for _ in 0..pred_size {
+                    readable.read_exact(&mut buffer)?;
+                    let y = f32::from_le_bytes(buffer);
+
+                    readable.read_exact(&mut buffer)?;
+                    let x = f32::from_le_bytes(buffer);
+
+                    predictions.push(Vector2::new(x, y));
