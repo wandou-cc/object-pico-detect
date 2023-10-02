@@ -116,3 +116,25 @@ impl Localizer {
                     let x = f32::from_le_bytes(buffer);
 
                     predictions.push(Vector2::new(x, y));
+                }
+
+                stage.push((tree, predictions));
+            }
+
+            stages.push(stage);
+        }
+
+        Ok(Self {
+            depth,
+            dsize: pred_size,
+            scale,
+            stages,
+        })
+    }
+}
+
+#[cfg(test)]
+mod tests {
+    use super::*;
+
+    #[test
