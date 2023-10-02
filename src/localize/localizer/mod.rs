@@ -137,4 +137,13 @@ impl Localizer {
 mod tests {
     use super::*;
 
-    #[test
+    #[test]
+    fn test_pupil_localizer_model_loading() {
+        let puploc = dbg!(Localizer::load(
+            include_bytes!("../../../models/pupil.localizer.bin")
+                .to_vec()
+                .as_slice(),
+        )
+        .expect("parsing failed"));
+
+        let stages = &pup
