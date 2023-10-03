@@ -156,4 +156,9 @@ mod tests {
 
         let dsize = 2usize.pow(puploc.depth as u32);
 
-        l
+        let first_node = ComparisonNode::from([30i8, -16i8, 125i8, 14i8]);
+        let last_node = ComparisonNode::from([-125i8, 26i8, 15i8, 98i8]);
+        assert_eq!(first_node, stages[0][0].0[0]);
+        assert_eq!(
+            last_node,
+            stages[stages.len() - 1][trees - 1].0[
