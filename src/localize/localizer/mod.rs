@@ -146,4 +146,14 @@ mod tests {
         )
         .expect("parsing failed"));
 
-        let stages = &pup
+        let stages = &puploc.stages;
+        let trees = stages[0].len();
+
+        assert_eq!(5, stages.len());
+        assert_eq!(20, trees);
+        assert_eq!(10, puploc.depth);
+        assert_eq!(80, (puploc.scale * 100.0) as u32);
+
+        let dsize = 2usize.pow(puploc.depth as u32);
+
+        l
