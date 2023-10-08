@@ -167,4 +167,8 @@ mod tests {
         let first_pred_test = Vector2::new(-0.08540829f32, 0.04436668f32);
         let last_pred_test = Vector2::new(0.05820565f32, 0.02249731f32);
         let first_pred = stages[0][0].1[0];
-        let last_pred = stages[stages.len() - 1][trees 
+        let last_pred = stages[stages.len() - 1][trees - 1].1[dsize - 1];
+        assert_abs_diff_eq!(first_pred_test, first_pred);
+        assert_abs_diff_eq!(last_pred_test, last_pred);
+    }
+}
