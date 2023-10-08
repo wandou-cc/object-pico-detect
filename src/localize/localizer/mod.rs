@@ -161,4 +161,10 @@ mod tests {
         assert_eq!(first_node, stages[0][0].0[0]);
         assert_eq!(
             last_node,
-            stages[stages.len() - 1][trees - 1].0[
+            stages[stages.len() - 1][trees - 1].0[dsize - 1 - 1]
+        );
+
+        let first_pred_test = Vector2::new(-0.08540829f32, 0.04436668f32);
+        let last_pred_test = Vector2::new(0.05820565f32, 0.02249731f32);
+        let first_pred = stages[0][0].1[0];
+        let last_pred = stages[stages.len() - 1][trees 
