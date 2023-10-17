@@ -69,3 +69,23 @@ mod tests {
         let data: [u8; 10] = node.into();
         let ThresholdNode { idx, threshold } = ThresholdNode::from(data);
         assert_eq!(idx, test_idx);
+        assert_eq!(threshold, test_threshold);
+    }
+
+    #[test]
+    fn test_threshold_node_bintest() {
+        let mut node = ThresholdNode {
+            idx: (0, 1),
+            threshold: 42,
+        };
+
+        assert!(node.bintest(&[42, 1]));
+        assert!(node.bintest(&[0, 1]));
+        assert!(!node.bintest(&[43, 1]));
+
+        node.threshold = -42;
+
+        assert!(node.bintest(&[0, 43]));
+        assert!(!node.bintest(&[0, 1]));
+    }
+}
