@@ -11,4 +11,19 @@ use super::tree::ShaperTree;
 #[derive(Debug, Clone)]
 pub struct ShaperForest {
     deltas: Vec<ShaperDelta>,
-    t
+    trees: Vec<ShaperTree>,
+}
+
+impl ShaperForest {
+    #[cfg(test)]
+    pub fn trees(&self) -> usize {
+        self.trees.len()
+    }
+
+    #[cfg(test)]
+    pub fn deltas(&self) -> usize {
+        self.deltas.len()
+    }
+
+    #[cfg(test)]
+    pub fn tree(&self, index: us
