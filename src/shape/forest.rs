@@ -49,4 +49,8 @@ impl ShaperForest {
         self.deltas
             .iter()
             .map(|delta| {
-                let point = 
+                let point = unsafe { shape.get_unchecked(delta.anchor()) };
+                let point = point + transform_to_shape.transform_vector(delta.value());
+                let point = transform_to_image * point;
+                let point = unsafe { point.coords.try_cast::<i32>().unwrap_unchecked() };
+
