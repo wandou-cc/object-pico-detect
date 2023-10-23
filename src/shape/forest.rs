@@ -39,4 +39,14 @@ impl ShaperForest {
     pub(super) fn extract_features<I>(
         &self,
         image: &I,
-        transform_
+        transform_to_shape: &SimilarityMatrix2<f32>,
+        transform_to_image: &Affine2<f32>,
+        shape: &[Point2<f32>],
+    ) -> Vec<u8>
+    where
+        I: GenericImageView<Pixel = Luma<u8>>,
+    {
+        self.deltas
+            .iter()
+            .map(|delta| {
+                let point = 
