@@ -26,4 +26,17 @@ impl ShaperForest {
     }
 
     #[cfg(test)]
-    pub fn tree(&self, index: us
+    pub fn tree(&self, index: usize) -> &ShaperTree {
+        self.trees.get(index).unwrap()
+    }
+
+    #[inline]
+    pub fn trees_slice(&self) -> &[ShaperTree] {
+        &self.trees
+    }
+
+    #[inline]
+    pub(super) fn extract_features<I>(
+        &self,
+        image: &I,
+        transform_
