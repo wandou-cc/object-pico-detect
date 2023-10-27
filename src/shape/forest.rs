@@ -54,3 +54,15 @@ impl ShaperForest {
                 let point = transform_to_image * point;
                 let point = unsafe { point.coords.try_cast::<i32>().unwrap_unchecked() };
 
+                get_pixel(image, point.x, point.y).map(|p| p.0[0]).unwrap_or(0u8)
+            })
+            .collect()
+    }
+
+    #[inline]
+    fn load_trees<R: Read>(
+        mut reader: R,
+        count: usize,
+        nodes: usize,
+        shifts: usize,
+        shape: u
