@@ -65,4 +65,16 @@ impl ShaperForest {
         count: usize,
         nodes: usize,
         shifts: usize,
-        shape: u
+        shape: usize,
+    ) -> Result<Vec<ShaperTree>, Error> {
+        let mut trees = Vec::with_capacity(count);
+
+        for _ in 0..count {
+            trees.push(ShaperTree::load(reader.by_ref(), nodes, shifts, shape)?);
+        }
+
+        Ok(trees)
+    }
+
+    #[inline]
+    fn load_anchors<R: Read>(mut reader:
