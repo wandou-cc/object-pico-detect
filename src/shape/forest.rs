@@ -77,4 +77,14 @@ impl ShaperForest {
     }
 
     #[inline]
-    fn load_anchors<R: Read>(mut reader:
+    fn load_anchors<R: Read>(mut reader: R, count: usize) -> Result<Vec<usize>, Error> {
+        let mut buf = [0u8; size_of::<u32>()];
+
+        let mut anchors = Vec::with_capacity(count);
+
+        for _ in 0..count {
+            reader.read_exact(&mut buf)?;
+            anchors.push(u32::from_be_bytes(buf) as usize);
+        }
+
+        Ok(an
