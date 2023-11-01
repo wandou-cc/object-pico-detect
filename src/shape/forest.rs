@@ -106,4 +106,14 @@ impl ShaperForest {
 
         for anchor in Self::load_anchors(reader.by_ref(), features)?.into_iter() {
             reader.read_exact(&mut buf)?;
-     
+            let x = f32::from_be_bytes(buf);
+
+            reader.read_exact(&mut buf)?;
+            let y = f32::from_be_bytes(buf);
+
+            deltas.push(ShaperDelta::new(anchor, x, y));
+        }
+
+        Ok(Self { trees, deltas })
+    }
+}
