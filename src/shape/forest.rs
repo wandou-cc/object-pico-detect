@@ -99,4 +99,11 @@ impl ShaperForest {
         shape: usize,
         features: usize,
     ) -> Result<Self, Error> {
-        let trees = Self::load_trees(re
+        let trees = Self::load_trees(reader.by_ref(), size, nodes, shifts, shape)?;
+
+        let mut buf = [0u8; size_of::<f32>()];
+        let mut deltas = Vec::with_capacity(features);
+
+        for anchor in Self::load_anchors(reader.by_ref(), features)?.into_iter() {
+            reader.read_exact(&mut buf)?;
+     
