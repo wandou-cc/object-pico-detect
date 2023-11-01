@@ -87,4 +87,16 @@ impl ShaperForest {
             anchors.push(u32::from_be_bytes(buf) as usize);
         }
 
-        Ok(an
+        Ok(anchors)
+    }
+
+    #[inline]
+    pub(super) fn load<R: Read>(
+        mut reader: R,
+        size: usize,
+        nodes: usize,
+        shifts: usize,
+        shape: usize,
+        features: usize,
+    ) -> Result<Self, Error> {
+        let trees = Self::load_trees(re
