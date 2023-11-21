@@ -15,3 +15,15 @@ use nalgebra::{Affine2, DimName, Matrix3, Point2, SimilarityMatrix2, U2};
 use forest::ShaperForest;
 
 /// Implements object alignment using an ensemble of regression trees.
+#[derive(Clone)]
+pub struct Shaper {
+    depth: usize,
+    dsize: usize,
+    shape: Vec<Point2<f32>>,
+    forests: Vec<ShaperForest>,
+}
+
+impl Debug for Shaper {
+    fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
+        f.debug_struct(stringify!(Shaper))
+           
