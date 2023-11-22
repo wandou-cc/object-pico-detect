@@ -26,4 +26,14 @@ pub struct Shaper {
 impl Debug for Shaper {
     fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
         f.debug_struct(stringify!(Shaper))
-           
+            .field("depth", &self.depth)
+            .field("dsize", &self.dsize)
+            .field("shape", &self.shape.len())
+            .field("forests", &self.forests.len())
+            .finish()
+    }
+}
+
+impl Shaper {
+    #[inline]
+    pub fn size(&
