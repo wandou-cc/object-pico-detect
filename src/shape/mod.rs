@@ -36,4 +36,15 @@ impl Debug for Shaper {
 
 impl Shaper {
     #[inline]
-    pub fn size(&
+    pub fn size(&self) -> usize {
+        self.shape.len()
+    }
+
+    #[inline]
+    pub fn init_points(&self) -> &[Point2<f32>] {
+        self.shape.as_ref()
+    }
+
+    /// Create a shaper object from a readable source.
+    #[inline]
+    pub fn load<R: Read>(mut reader: R) -> Result<Self, Error>
