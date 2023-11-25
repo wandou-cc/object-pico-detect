@@ -65,3 +65,12 @@ impl Shaper {
 
         reader.read_exact(&mut buf)?;
         let nforests = u32::from_be_bytes(buf) as usize;
+
+        reader.read_exact(&mut buf)?;
+        let forest_size = u32::from_be_bytes(buf) as usize;
+
+        reader.read_exact(&mut buf)?;
+        let tree_depth = u32::from_be_bytes(buf);
+
+        reader.read_exact(&mut buf)?;
+        let nfeatures = u32::from_be_by
