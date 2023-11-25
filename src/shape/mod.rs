@@ -56,4 +56,12 @@ impl Shaper {
         }
 
         reader.read_exact(&mut buf)?;
-        let nrow
+        let nrows = u32::from_be_bytes(buf) as usize;
+
+        reader.read_exact(&mut buf)?;
+        let ncols = u32::from_be_bytes(buf) as usize;
+
+        let shape_size = nrows * ncols / U2::USIZE;
+
+        reader.read_exact(&mut buf)?;
+        let nforests = u32::from_be_bytes(buf) as usize;
