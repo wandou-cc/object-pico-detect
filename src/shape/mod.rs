@@ -47,4 +47,13 @@ impl Shaper {
 
     /// Create a shaper object from a readable source.
     #[inline]
-    pub fn load<R: Read>(mut reader: R) -> Result<Self, Error>
+    pub fn load<R: Read>(mut reader: R) -> Result<Self, Error> {
+        let mut buf = [0u8; 4];
+        reader.read_exact(&mut buf[0..1])?;
+        let version = buf[0];
+        if version != 1 {
+            return Err(Error::new(ErrorKind::InvalidData, "wrong version"));
+        }
+
+        reader.read_exact(&mut buf)?;
+        let nrow
