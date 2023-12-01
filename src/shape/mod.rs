@@ -73,4 +73,10 @@ impl Shaper {
         let tree_depth = u32::from_be_bytes(buf);
 
         reader.read_exact(&mut buf)?;
-        let nfeatures = u32::from_be_by
+        let nfeatures = u32::from_be_bytes(buf) as usize;
+
+        let shifts_count = 2u32.pow(tree_depth) as usize;
+        let nodes_count = shifts_count - 1;
+
+        // dbg!(nrows, ncols, nforests, forest_size, tree_depth, nfeatures);
+        let shape: Vec<Point2<f32>> = utils::read_shape(reader.by_ref(
