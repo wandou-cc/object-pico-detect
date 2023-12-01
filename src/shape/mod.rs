@@ -79,4 +79,12 @@ impl Shaper {
         let nodes_count = shifts_count - 1;
 
         // dbg!(nrows, ncols, nforests, forest_size, tree_depth, nfeatures);
-        let shape: Vec<Point2<f32>> = utils::read_shape(reader.by_ref(
+        let shape: Vec<Point2<f32>> = utils::read_shape(reader.by_ref(), shape_size)?
+            .column_iter()
+            .map(|col| Point2::new(col.x, col.y))
+            .collect();
+
+        let mut forests = Vec::with_capacity(nforests);
+        for _ in 0..nforests {
+            forests.push(ShaperForest::load(
+           
