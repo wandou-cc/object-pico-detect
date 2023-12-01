@@ -99,4 +99,18 @@ impl Shaper {
         Ok(Self {
             depth: tree_depth as usize,
             dsize: nodes_count,
-        
+            shape,
+            forests,
+        })
+    }
+
+    /// Estimate object shape on the image
+    ///
+    /// ### Arguments
+    ///
+    /// * `image` - Target image.
+    /// TODO:
+    ///
+    /// ### Returns
+    ///
+    /// A collection of points each one corresponds to la
