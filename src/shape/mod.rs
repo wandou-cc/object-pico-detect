@@ -87,4 +87,16 @@ impl Shaper {
         let mut forests = Vec::with_capacity(nforests);
         for _ in 0..nforests {
             forests.push(ShaperForest::load(
-           
+                reader.by_ref(),
+                forest_size,
+                nodes_count,
+                shifts_count,
+                shape_size,
+                nfeatures,
+            )?);
+        }
+
+        Ok(Self {
+            depth: tree_depth as usize,
+            dsize: nodes_count,
+        
