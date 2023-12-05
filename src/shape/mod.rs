@@ -113,4 +113,13 @@ impl Shaper {
     ///
     /// ### Returns
     ///
-    /// A collection of points each one corresponds to la
+    /// A collection of points each one corresponds to landmark location.
+    /// Points count is defined by a loaded shaper model.
+    #[inline]
+    pub fn shape<I>(&self, image: &I, rect: Rect) -> Vec<Point2<f32>>
+    where
+        I: GenericImageView<Pixel = Luma<u8>>,
+    {
+        let mut shape = self.shape.clone();
+
+        let transform_to_image = find_trans
