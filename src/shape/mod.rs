@@ -128,4 +128,11 @@ impl Shaper {
             let transform_to_shape = Self::find_transform(self, shape.as_slice());
 
             let features =
-                forest.extract_features(image, &transform_to_shape, &transform_to_image, &sh
+                forest.extract_features(image, &transform_to_shape, &transform_to_image, &shape);
+
+            for tree in forest.trees_slice().iter() {
+                let idx = (0..self.depth).fold(0, |idx, _| {
+                    2 * idx + 1 + tree.node(idx).bintest(features.as_slice()) as usize
+                }) - self.dsize;
+
+                shape.it
