@@ -122,4 +122,10 @@ impl Shaper {
     {
         let mut shape = self.shape.clone();
 
-        let transform_to_image = find_trans
+        let transform_to_image = find_transform_to_image(rect);
+
+        for forest in self.forests.iter() {
+            let transform_to_shape = Self::find_transform(self, shape.as_slice());
+
+            let features =
+                forest.extract_features(image, &transform_to_shape, &transform_to_image, &sh
