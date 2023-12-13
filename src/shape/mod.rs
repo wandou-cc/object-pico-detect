@@ -155,4 +155,18 @@ impl Shaper {
         unsafe {
             similarity_least_squares::from_point_slices(
                 self.shape.as_slice(),
-               
+                shape,
+                f32::EPSILON,
+                0,
+            )
+            .unwrap_unchecked()
+        }
+    }
+}
+
+#[inline]
+fn find_transform_to_image(rect: Rect) -> Affine2<f32> {
+    Affine2::from_matrix_unchecked(Matrix3::new(
+        rect.width() as f32,
+        0.0,
+        rect.left() as 
