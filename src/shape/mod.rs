@@ -145,4 +145,14 @@ impl Shaper {
 
         shape
             .iter_mut()
-            .for_each(|point| *point 
+            .for_each(|point| *point = transform_to_image * *point);
+
+        shape
+    }
+
+    #[inline]
+    fn find_transform(&self, shape: &[Point2<f32>]) -> SimilarityMatrix2<f32> {
+        unsafe {
+            similarity_least_squares::from_point_slices(
+                self.shape.as_slice(),
+               
