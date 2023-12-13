@@ -135,4 +135,14 @@ impl Shaper {
                     2 * idx + 1 + tree.node(idx).bintest(features.as_slice()) as usize
                 }) - self.dsize;
 
-                shape.it
+                shape.iter_mut().zip(tree.shift(idx).iter()).for_each(
+                    |(shape_point, shift_vector)| {
+                        *shape_point += shift_vector;
+                    },
+                );
+            }
+        }
+
+        shape
+            .iter_mut()
+            .for_each(|point| *point 
