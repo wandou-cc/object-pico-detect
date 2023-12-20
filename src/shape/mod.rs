@@ -169,4 +169,21 @@ fn find_transform_to_image(rect: Rect) -> Affine2<f32> {
     Affine2::from_matrix_unchecked(Matrix3::new(
         rect.width() as f32,
         0.0,
-        rect.left() as 
+        rect.left() as f32,
+        0.0,
+        rect.height() as f32,
+        rect.top() as f32,
+        0.0,
+        0.0,
+        1.0,
+    ))
+}
+
+#[cfg(test)]
+mod tests {
+    use super::*;
+
+    #[test]
+    fn test_face_landmarks_model_loading() {
+        let shaper = dbg!(Shaper::load(
+            include_bytes!
