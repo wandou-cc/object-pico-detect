@@ -186,4 +186,14 @@ mod tests {
     #[test]
     fn test_face_landmarks_model_loading() {
         let shaper = dbg!(Shaper::load(
-            include_bytes!
+            include_bytes!("../../models/face-5.shaper.bin")
+                .to_vec()
+                .as_slice(),
+        )
+        .expect("parsing failed"));
+
+        assert_eq!(shaper.forests.len(), 15);
+        assert_eq!(shaper.forests[0].trees(), 500);
+
+        assert_eq!(shaper.forests[0].tree(0).nodes(), 15);
+       
