@@ -196,4 +196,8 @@ mod tests {
         assert_eq!(shaper.forests[0].trees(), 500);
 
         assert_eq!(shaper.forests[0].tree(0).nodes(), 15);
-       
+        assert_eq!(shaper.forests[0].tree(0).shifts(), 16);
+
+        assert_eq!(shaper.forests[0].deltas(), 800);
+    }
+}
