@@ -24,4 +24,14 @@ impl ShaperTree {
     }
 
     #[inline]
-    pub fn node(&self, index: usize) -> &Threshold
+    pub fn node(&self, index: usize) -> &ThresholdNode {
+        unsafe { self.nodes.get_unchecked(index) }
+    }
+
+    #[inline]
+    pub fn shift(&self, index: usize) -> &Vec<Vector2<f32>> {
+        unsafe { self.shifts.get_unchecked(index) }
+    }
+
+    #[inline(always)]
+    fn load_nodes<R: Read>(mut reader: R, count: usize) -> Result<Vec<ThresholdNode>,
