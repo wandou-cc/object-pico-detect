@@ -34,4 +34,17 @@ impl ShaperTree {
     }
 
     #[inline(always)]
-    fn load_nodes<R: Read>(mut reader: R, count: usize) -> Result<Vec<ThresholdNode>,
+    fn load_nodes<R: Read>(mut reader: R, count: usize) -> Result<Vec<ThresholdNode>, Error> {
+        let mut nodes = Vec::with_capacity(count);
+        let mut buf10 = [0u8; 10];
+
+        for _ in 0..count {
+            reader.read_exact(&mut buf10)?;
+            nodes.push(ThresholdNode::from(buf10));
+        }
+
+        Ok(nodes)
+    }
+
+    #[inline(always)]
+   
