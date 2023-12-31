@@ -52,4 +52,14 @@ impl ShaperTree {
 
         for _ in 0..count {
             let shift: Vec<Vector2<f32>> = read_shape(reader.by_ref(), size)?
-        
+                .column_iter()
+                .map(|col| Vector2::new(col.x, col.y))
+                .collect();
+            shifts.push(shift);
+        }
+
+        Ok(shifts)
+    }
+
+    #[inline]
+    pub fn load<R: Read>(mut reader: R, nodes: usize, shifts: usize, shape: usize) -> Result<
