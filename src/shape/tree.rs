@@ -62,4 +62,10 @@ impl ShaperTree {
     }
 
     #[inline]
-    pub fn load<R: Read>(mut reader: R, nodes: usize, shifts: usize, shape: usize) -> Result<
+    pub fn load<R: Read>(mut reader: R, nodes: usize, shifts: usize, shape: usize) -> Result<Self, Error> {
+        Ok(Self {
+            nodes: Self::load_nodes(reader.by_ref(), nodes)?,
+            shifts: Self::load_shifts(reader.by_ref(), shifts, shape)?,
+        })
+    }
+}
