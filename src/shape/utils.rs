@@ -9,4 +9,12 @@ where
 {
     let mut m = UninitMatrix::<f32, U2, Dyn>::uninit(U2, Dyn::from_usize(size));
 
-    let mut bu
+    let mut buf = [0u8; 4];
+
+    for value in m.iter_mut() {
+        reader.read_exact(&mut buf)?;
+        value.write(f32::from_be_bytes(buf));
+    }
+
+    Ok(unsafe { m.assume_init() })
+}
