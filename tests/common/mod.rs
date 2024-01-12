@@ -27,4 +27,17 @@ pub fn detector_path() -> PathBuf {
 
 #[fixture]
 pub fn localizer_path() -> PathBuf {
-    "./mode
+    "./models/pupil.localizer.bin".into()
+}
+
+#[fixture]
+pub fn shaper_path() -> PathBuf {
+    "./models/face-5.shaper.bin".into()
+}
+
+#[fixture]
+pub fn test_image(test_image_path: PathBuf) -> image::GrayImage {
+    image::open(test_image_path).unwrap().to_luma8()
+}
+
+#[fixture]
