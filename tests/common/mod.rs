@@ -51,4 +51,17 @@ pub fn localizer(localizer_path: PathBuf) -> Localizer {
 }
 
 #[fixture]
-pub fn shaper(shaper_path: PathBuf) -> Sha
+pub fn shaper(shaper_path: PathBuf) -> Shaper {
+    Shaper::load(file(shaper_path)).unwrap()
+}
+
+#[fixture]
+pub fn classify_case(test_image: GrayImage) -> (GrayImage, Square, Option<f32>) {
+    (
+        test_image,
+        Square::at(216, 208).of_size(170),
+        Some(2.4434934),
+    )
+}
+
+#[fixture]
