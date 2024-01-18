@@ -86,4 +86,15 @@ pub fn shaper_case(test_image: GrayImage) -> (GrayImage, Square, Vec<Point2<f32>
     (
         test_image,
         Square::at(213, 225).of_size(153),
-   
+        vec![
+            [341.8397, 269.6037].into(),
+            [318.1169, 272.2306].into(),
+            [253.2326, 266.5196].into(),
+            [284.6829, 271.6468].into(),
+            [306.5808, 331.5721].into(),
+        ],
+    )
+}
+
+#[fixture]
+pub 
