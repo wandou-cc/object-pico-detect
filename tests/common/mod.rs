@@ -122,4 +122,17 @@ pub fn detect_multiscale(
 ) -> DetectMultiscale {
     DetectMultiscale::builder()
         .multiscaler(multiscaler)
-        .clusteriz
+        .clusterizer(clusterizer)
+        .padding(padding)
+        .build()
+        .unwrap()
+}
+
+#[fixture]
+pub fn localize_perturbate() -> LocalizePerturbate {
+    LocalizePerturbate::new(31)
+}
+
+#[fixture]
+pub fn rng() -> Xoroshiro128PlusPlus {
+    Xoroshiro128PlusP
