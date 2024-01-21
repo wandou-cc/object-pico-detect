@@ -97,4 +97,16 @@ pub fn shaper_case(test_image: GrayImage) -> (GrayImage, Square, Vec<Point2<f32>
 }
 
 #[fixture]
-pub 
+pub fn multiscaler(test_image: GrayImage) -> Multiscaler {
+    Multiscaler::new(100, test_image.width(), 0.05, 1.1).unwrap()
+}
+
+#[fixture]
+pub fn clusterizer() -> Clusterizer {
+    Clusterizer {
+        intersection_threshold: 0.2,
+        score_threshold: 30.0,
+    }
+}
+
+#[fixture
