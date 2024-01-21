@@ -109,4 +109,17 @@ pub fn clusterizer() -> Clusterizer {
     }
 }
 
-#[fixture
+#[fixture]
+pub fn padding() -> Padding {
+    Default::default()
+}
+
+#[fixture]
+pub fn detect_multiscale(
+    multiscaler: Multiscaler,
+    clusterizer: Clusterizer,
+    padding: Padding,
+) -> DetectMultiscale {
+    DetectMultiscale::builder()
+        .multiscaler(multiscaler)
+        .clusteriz
