@@ -146,4 +146,14 @@ pub fn localize_perturbate_case(test_image: GrayImage) -> (GrayImage, [(Square, 
             (
                 Square::at(300, 244).of_size(38),
                 Point2::new(328.6757, 265.8514),
-            
+            ),
+            (
+                Square::at(250, 250).of_size(38),
+                Point2::new(265.1674, 265.0339),
+            ),
+        ],
+    )
+}
+
+#[fixture]
+pub fn detect_multiscale_case(test_image: GrayImage) -> (GrayImage, Vec<(Target, f32)>) {
