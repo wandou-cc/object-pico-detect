@@ -10,4 +10,14 @@ use common::{classify_case, detect_multiscale, detect_multiscale_case, detector}
 
 #[rstest]
 fn test_detector_classify(detector: Detector, classify_case: (GrayImage, Square, Option<f32>)) {
-    let (image,
+    let (image, region, score) = classify_case;
+    assert!(detector.classify(&image, region) == score);
+}
+
+#[rstest]
+fn test_detect_multiscale(
+    detect_multiscale: DetectMultiscale,
+    detector: Detector,
+    detect_multiscale_case: (GrayImage, Vec<(Target, f32)>),
+) {
+    let (image, det
