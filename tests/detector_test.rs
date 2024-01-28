@@ -20,4 +20,12 @@ fn test_detect_multiscale(
     detector: Detector,
     detect_multiscale_case: (GrayImage, Vec<(Target, f32)>),
 ) {
-    let (image, det
+    let (image, detections) = detect_multiscale_case;
+
+    for (detection, (target, score)) in detect_multiscale
+        .run(&detector, &image)
+        .iter()
+        .zip(detections.iter())
+    {
+        assert_abs_diff_eq!(detection.score(), score, epsilon = 1e-4);
+        assert_abs_dif
