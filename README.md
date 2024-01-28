@@ -1,1 +1,1 @@
-[![crates-badge]][crates]\n[![docs-badge]]
+[![crates-badge]][crates]\n[![docs-badge]][docs]\n![license-badge]\n\n# pico-detect\n\nThis library is a reimplementation of _Pixel Intensity Comparison-based Object_ (PICO) detection algorithms in Rust:\n\n- `Detector`: Cascade of binary classifiers from [pico];\n- `Localizer`: Localization with an ensemble
