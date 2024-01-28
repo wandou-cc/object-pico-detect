@@ -28,4 +28,7 @@ fn test_detect_multiscale(
         .zip(detections.iter())
     {
         assert_abs_diff_eq!(detection.score(), score, epsilon = 1e-4);
-        assert_abs_dif
+        assert_abs_diff_eq!(detection.region().size(), target.size(), epsilon = 1e-4);
+        assert_abs_diff_eq!(detection.region().point(), target.point(), epsilon = 1e-4);
+    }
+}
